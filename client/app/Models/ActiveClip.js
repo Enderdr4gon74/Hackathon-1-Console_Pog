@@ -10,7 +10,7 @@ export class ActiveClip{
     <div class="col-8 d-flex flex-column justify-content-between">
       <section class="row">
         <div class="col-12">
-          <iframe width="100%" height="450" src="" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          <iframe width="100%" height="450" src="${this.}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
           <!-- <video width="320" height="240" controls>
             <source src="../client/assets/img/production ID_4247319.mp4" type="video/mp4">
           </video> -->
