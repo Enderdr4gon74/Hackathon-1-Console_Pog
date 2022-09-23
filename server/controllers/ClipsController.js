@@ -7,8 +7,10 @@ export class ClipsController extends BaseController {
     super("/api/clips");
     this.router
       .get("", this.getClips)
+      .get('/:clipId', this.getClipById)
       .use(Auth0Provider.getAuthorizedUserInfo)
-      // .get('/:clipId', this.getClipById)
+      .get('/:clipId/comments', this.getClipComments)
+      .post('/:clipId/comments', this.createClipComment)
       .post("", this.createClip)
       .delete('/:clipId', this.removeClip)
   }
@@ -31,14 +33,33 @@ export class ClipsController extends BaseController {
     }
   }
 
-  // async getClipById(req, res, next) {
-  //   try {
-  //     const clip = await clipsService.getClipById(req.params.clipId);
-  //     res.send(clip);
-  //   } catch (error) {
-  //     next(error);
-  //   }
-  // }
+  async createClipComment(req, res, next) {
+    try {
+      const formData = req.body
+      const clipComment = await clipsService.createClipComment(req.params.clipId, formData)
+      res.send(clipComment)
+    } catch (error) {
+      next(error)
+    }
+  }
+
+  async getClipComments(req, res, next) {
+    try {
+      const clipComments = await clipsService.getCommentsByClipId(req.params.clipId)
+      res.send(clipComments)
+    } catch (error) {
+      next(error)
+    }
+  }
+
+  async getClipById(req, res, next) {
+    try {
+      const clip = await clipsService.getClipById(req.params.clipId);
+      res.send(clip);
+    } catch (error) {
+      next(error);
+    }
+  }
   async getClips(req, res, next) {
     try {
       const clips = await clipsService.getClips();

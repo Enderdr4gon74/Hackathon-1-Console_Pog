@@ -4,7 +4,7 @@ const ObjectId = mongoose.Types.ObjectId;
 
 export const CommentSchema = new Schema(
   {
-    title: { type: String, required: true },
+    content: { type: String, required: true },
     clipId: { type: ObjectId, ref: "Clip", required: true },
     commentCreatorId: { type: ObjectId, ref: "Account", required: true },
   },
