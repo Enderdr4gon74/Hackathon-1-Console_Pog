@@ -4,7 +4,8 @@ import BaseController from "../utils/BaseController.js";
 export class CommentsController extends BaseController {
   constructor() {
     super("/api/comments");
-    this.router.post("", this.createComments);
+    this.router
+      .post("", this.createComments);
   }
 
   async createComments(req, res, next) {

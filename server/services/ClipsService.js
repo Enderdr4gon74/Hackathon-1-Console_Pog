@@ -2,6 +2,14 @@ import { dbContext } from "../db/DbContext.js";
 import { BadRequest, Forbidden } from "../utils/Errors.js";
 
 class ClipsService {
+  async createClipComment(clipId, formData) {
+    formData.clipId = clipId
+    const clipComment = await dbContext.Comments.create(formData)
+  }
+   async getCommentsByClipId(clipId) {
+    const clipComments = await dbContext.Comments.find({clipId}).populate('creator', "picture name")
+    return clipComments
+  }
   async getViewers(query = {}) {
     const viewers = await dbContext.Viewers.find(query)
       .populate("clip")
