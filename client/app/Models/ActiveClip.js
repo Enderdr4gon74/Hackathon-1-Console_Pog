@@ -1,16 +1,20 @@
-
-
-export class ActiveClip{
-  constructor(data){
-    this.name = data.name
+export class ActiveClip {
+  constructor(data) {
+    this.name = data.name;
+    this.url = data.url;
+    this.id = data.id;
+    this.likes = data.likes;
+    this.dislikes = data.dislikes;
+    this.views = data.views;
+    this.description = data.description;
   }
 
-  get activeClipTemplate(){
-    return`
+  get activeClipTemplate() {
+    return `
     <div class="col-8 d-flex flex-column justify-content-between">
       <section class="row">
         <div class="col-12">
-          <iframe width="100%" height="450" src="${this.}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          <iframe width="100%" height="450" src="${this.url}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
           <!-- <video width="320" height="240" controls>
             <source src="../client/assets/img/production ID_4247319.mp4" type="video/mp4">
           </video> -->
@@ -19,10 +23,10 @@ export class ActiveClip{
       <section class="row mb-2">
         <div class="col-12 d-flex justify-content-between">
           <div class="d-flex">
-            <button onclick="" class="btn btn-outline-dark me-4"><i class="mdi mdi-thumb-up"></i> 0</button>
-            <button onclick="" class="btn btn-outline-dark"><i class="mdi mdi-thumb-down"></i> 0</button>
+            <button onclick="" class="btn btn-outline-dark me-4"><i class="mdi mdi-thumb-up"></i>${this.likes}</button>
+            <button onclick="" class="btn btn-outline-dark"><i class="mdi mdi-thumb-down"></i>${this.dislikes}</button>
           </div>
-          <h4>0 Views</h4>
+          <h4>${this.views}  Views</h4>
         </div>
       </section>
     </div>
@@ -49,14 +53,14 @@ export class ActiveClip{
     </div>
   </div>
     </div>
-    `
+    `;
   }
-  get commentsTemplate(){
-    return`
+  get commentsTemplate() {
+    return `
     <div class="col-12 d-flex">
               <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem dignissimos eaque delectus.</p>
               <img title="name" src="https://thiscatdoesnotexist.com/" alt="" class="img-fluid userImage rounded-circle ms-2">
             </div>
-    `
+    `;
   }
 }
