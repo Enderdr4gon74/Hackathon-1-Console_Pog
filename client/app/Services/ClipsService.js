@@ -6,7 +6,7 @@ class ClipsService{
   async getClips() {
     const res = await server.get('/api/clips')
     console.log(res.data)
-    appState.clips = res.data.map(t => new Clip(t))
+    appState.clips = res.data.map(c => new Clip(c))
   }
 }
 export const clipsService = new ClipsService()

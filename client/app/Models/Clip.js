@@ -14,5 +14,9 @@ export class Clip {
       </div>
     `
   }
-  get 
+  get VideoTemplate(){
+    return/*html*/`
+    
+    `
+  }
 }
