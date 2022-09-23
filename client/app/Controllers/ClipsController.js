@@ -8,15 +8,17 @@ function _drawClips(){
   appState.clips.forEach(c=> template += c.ClipTemplate)
   setHTML('clips',template)
 }
-function _drawVideo(){
-  setHTML('videos', )
+function _drawActiveClip(){
+// @ts-ignore
+let template = appState.activeClip.activeClipTemplate
+setHTML('active-clip',template)
 }
 export class ClipsController{
   
   constructor(){
     this.getClips()
     appState.on('clips',_drawClips)
-    appState.on('clips',_drawVideo)
+    appState.on('activeClip',_drawActiveClip)
   }
   async getClips() {
     try {

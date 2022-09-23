@@ -16,7 +16,7 @@ class AppState extends EventEmitter {
   /** @type {import('./Models/Clip.js').Clip[]} */
   clips = []
   
-  /** @type {import('./Models/.js'). | null} */
+  /** @type {import('./Models/ActiveClip.js').ActiveClip | null} */
   activeClip = null
   socketData = []
 }
