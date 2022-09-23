@@ -4,8 +4,8 @@ const ObjectId = mongoose.Types.ObjectId;
 
 export const ClipSchema = new Schema(
   {
-    name: { type: String, required: true },
-    description: { type: String, default: "" },
+    name: { type: String, required: true, maxlength: 30 },
+    description: { type: String, default: "", maxlength: 200 },
     url: { type: String, required: true },
     // STUB be to sure add whats appropriate
     creatorId: { type: ObjectId, ref: "Account", required: true },

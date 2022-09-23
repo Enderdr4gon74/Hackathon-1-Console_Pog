@@ -8,7 +8,18 @@ export class ClipsController extends BaseController {
     this.router
       .get("", this.getClips)
       .use(Auth0Provider.getAuthorizedUserInfo)
-      .post("", this.createClip);
+      // .get('/:clipId', this.getClipById)
+      .post("", this.createClip)
+      .delete('/:clipId', this.removeClip)
+  }
+  async removeClip(req, res, next) {
+    try {
+
+      await clipsService.removeClip(req.params.clipId, req.userInfo)
+      res.send('Removed this Clip!')
+    } catch (error) {
+      next(error)
+    }
   }
   async createClip(req, res, next) {
     try {
