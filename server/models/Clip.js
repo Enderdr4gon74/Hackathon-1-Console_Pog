@@ -13,7 +13,7 @@ export const ClipSchema = new Schema(
         "https://th.bing.com/th/id/OIP.dZjLz42vJR4eQXuBA4kDigHaEK?pid=ImgDet&rs=1",
     },
     views: { type: Number, default: 0 },
-    comments: {},
+    
 
     // STUB be to sure add whats appropriate
     creatorId: { type: ObjectId, ref: "Account", required: true },
