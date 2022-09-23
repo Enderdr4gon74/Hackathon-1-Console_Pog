@@ -54,7 +54,7 @@
     </nav>
     <nav class="navbar navbar-dark navbar-expand bg-dark text-light px-3 pb-2 justify-content-end">
       <div class="col-4 d-flex py-2 px-4 justify-content-end">
-        <button >Add Video</button>
+        <button class="btn btn-outline-light"  data-bs-toggle="offcanvas" data-bs-target="#addVideoDark" aria-controls="addVideoDark">Add Video</button>
       </div>
     </nav>
   </header>
@@ -63,23 +63,23 @@
     
     <section class="row gap-1 py-5 justify-content-around">
       <div class="col-3 mb-4 p-0 d-flex flex-column align-items-center">
-        <img src="https://thiscatdoesnotexist.com/" alt="video" class="thumbnail"  data-bs-toggle="modal" data-bs-target="#Video">
+        <img src="https://thiscatdoesnotexist.com/" alt="video" class="thumbnail selectable"  data-bs-toggle="modal" data-bs-target="#Video">
         <h4>test</h4>
       </div>
       <div class="col-3 mb-4 p-0 d-flex flex-column align-items-center">
-        <img src="https://thiscatdoesnotexist.com/" alt="video" class="thumbnail"  data-bs-toggle="modal" data-bs-target="#Video">
+        <img src="https://thiscatdoesnotexist.com/" alt="video" class="thumbnail selectable"  data-bs-toggle="modal" data-bs-target="#Video">
         <h4>test</h4>
       </div>
       <div class="col-3 mb-4 p-0 d-flex flex-column align-items-center">
-        <img src="https://thiscatdoesnotexist.com/" alt="video" class="thumbnail"  data-bs-toggle="modal" data-bs-target="#Video">
+        <img src="https://thiscatdoesnotexist.com/" alt="video" class="thumbnail selectable"  data-bs-toggle="modal" data-bs-target="#Video">
         <h4>test</h4>
       </div>
       <div class="col-3 mb-4 p-0 d-flex flex-column align-items-center">
-        <img src="https://thiscatdoesnotexist.com/" alt="video" class="thumbnail"  data-bs-toggle="modal" data-bs-target="#Video">
+        <img src="https://thiscatdoesnotexist.com/" alt="video" class="thumbnail selectable"  data-bs-toggle="modal" data-bs-target="#Video">
         <h4>test</h4>
       </div>
       <div class="col-3 mb-4 p-0 d-flex flex-column align-items-center">
-        <img src="https://thiscatdoesnotexist.com/" alt="video" class="thumbnail"  data-bs-toggle="modal" data-bs-target="#Video">
+        <img src="https://thiscatdoesnotexist.com/" alt="video" class="thumbnail selectable"  data-bs-toggle="modal" data-bs-target="#Video">
         <h4>test</h4>
       </div>
     </section>
@@ -94,7 +94,7 @@
         </div>
         <div class="modal-body container-fluid">
           <section class="row">
-            <div class="col-8">
+            <div class="col-8 d-flex flex-column justify-content-between">
               <section class="row">
                 <div class="col-12">
                   <iframe width="100%" height="450" src="https://www.youtube.com/embed/m2j6FXBrze4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
@@ -103,10 +103,13 @@
                   </video> -->
                 </div>
               </section>
-              <section class="row">
+              <section class="row mb-2">
                 <div class="col-12 d-flex justify-content-between">
-                  <button><i class="mdi mdi-thumb-up"></i> 0</button>
-                  <button><i class="mdi mdi-thumb-down"></i> 0</button>
+                  <div class="d-flex">
+                    <button onclick="" class="btn btn-outline-dark me-4"><i class="mdi mdi-thumb-up"></i> 0</button>
+                    <button onclick="" class="btn btn-outline-dark"><i class="mdi mdi-thumb-down"></i> 0</button>
+                  </div>
+                  <h4>0 Views</h4>
                 </div>
               </section>
             </div>
@@ -115,7 +118,7 @@
                 <div class="col-12 comment">
                   <div class="row flex-column justify-content-between comment">
                     <div class="col-12 comment-row overflow-auto">
-                      <div class="row">
+                      <div class="row gap-2">
                         <div class="col-12 d-flex">
                           <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem dignissimos eaque delectus.</p>
                           <img title="name" src="https://thiscatdoesnotexist.com/" alt="" class="img-fluid userImage rounded-circle ms-2">
@@ -170,13 +173,13 @@
                         </div>
                       </div>
                     </div>
-                    <div class="col-12 p-0">
-                      <form class="d-flex align-items-center">
-                        <div class="form-floating me-2">
-                          <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
-                          <label for="floatingInput">Comments</label>
+                    <div class="col-12 p-0 mt-2">
+                      <form class="d-flex justify-content-between align-items-center">
+                        <div class="form-floating">
+                          <input type="text" class="form-control" name="comment" id="comment" placeholder="Comment">
+                          <label for="comment">Comment</label>
                         </div>
-                        <button type="submit" class="btn btn-info comment">Comment</button>
+                        <button type="submit" class="btn btn-info comment me-2">Comment</button>
                       </form>
                     </div>
                   </div>
@@ -189,6 +192,15 @@
     </div>
   </div>
   
+  <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="addVideoDark" aria-labelledby="addVideoDarkLabel">
+    <div class="offcanvas-header">
+      <h5 class="offcanvas-title" id="addVideoDarkLabel">Offcanvas</h5>
+      <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+      
+    </div>
+  </div>
 
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   <script src="https://cdn.auth0.com/js/auth0-spa-js/1.22/auth0-spa-js.production.js"></script>

@@ -9,6 +9,12 @@ class AppState extends EventEmitter {
   account = {}
   /** @type {import('./Models/Value').Value[]} */
   values = []
+
+  /** @type {import('./Models/Video.js').Video | null} */
+  video = null
+
+  /** @type {import('./Models/Video.js').Video[]} */
+  thumbnails = []
   socketData = []
 }
 
