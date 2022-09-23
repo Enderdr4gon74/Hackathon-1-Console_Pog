@@ -90,3 +90,4 @@ function avatarTemplate(account) {
       <div></div>
       `
 }
+// test
