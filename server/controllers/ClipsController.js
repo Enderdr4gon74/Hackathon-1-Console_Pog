@@ -36,7 +36,7 @@ export class ClipsController extends BaseController {
   async createClipComment(req, res, next) {
     try {
       const formData = req.body
-      const clipComment = await clipsService.createClipComment(req.params.clipId, formData)
+      const clipComment = await clipsService.createClipComment(req.params.clipId, formData, req.userInfo)
       res.send(clipComment)
     } catch (error) {
       next(error)
