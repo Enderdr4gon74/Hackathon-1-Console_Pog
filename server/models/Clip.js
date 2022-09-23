@@ -18,7 +18,14 @@ ClipSchema.virtual("creator", {
   foreignField: "_id",
   justOne: true,
   ref: "Account",
-});
+})
+ClipSchema.virtual("viewer", {
+  localField: "_id",
+  foreignField: "clipId",
+  count: true,
+  ref: "Viewer"
+})
+  ;
 
 // TODO add this to dbContext
 
