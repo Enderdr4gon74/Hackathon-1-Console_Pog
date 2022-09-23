@@ -2,12 +2,25 @@ import { dbContext } from "../db/DbContext.js";
 import { BadRequest, Forbidden } from "../utils/Errors.js";
 
 class ClipsService {
+  async getViewers(query = {}) {
+    const viewers = await dbContext.Viewers.find(query)
+      .populate("clip")
+      .populate("viewer", "name picture");
+    return viewers;
+  }
+  async createViewer(formData) {
+    const clip = await this.getClipById(formData.clipId);
+    const viewer = await dbContext.Viewers.create(formData);
+    await viewer.populate("clip");
+    await viewer.populate("viewer", "name picture");
+    return viewer;
+  }
   async removeClip(id, userInfo) {
-    const clip = await this.getClipById(id)
+    const clip = await this.getClipById(id);
     if (clip.creatorId != userInfo.id) {
-      throw new Forbidden('HEY GO AWAY')
+      throw new Forbidden("HEY GO AWAY");
     }
-    await clip.remove()
+    await clip.remove();
   }
   async createClip(formData) {
     const clip = await dbContext.Clips.create(formData);
@@ -16,14 +29,20 @@ class ClipsService {
   }
   async getClipById(id) {
     // TODO populate for every user like or view
-    const clip = await dbContext.Clips.findById(id).populate('creator', 'name picture')
+    const clip = await dbContext.Clips.findById(id).populate(
+      "creator",
+      "name picture"
+    );
     if (!clip) {
-      throw new BadRequest('Invalid Id')
+      throw new BadRequest("Invalid Id");
     }
-    return clip
+    return clip;
   }
   async getClips() {
-    const clips = await dbContext.Clips.find().populate('creator', 'name picture');
+    const clips = await dbContext.Clips.find().populate(
+      "creator",
+      "name picture"
+    );
     return clips;
   }
   //
