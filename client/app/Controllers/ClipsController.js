@@ -28,4 +28,13 @@ export class ClipsController{
       Pop.error(error)
     }
   }
+  async setActiveClip(id){
+  try {
+      await clipsService.
+    } catch (error) {
+      console.error('[setActiveClip]',error)
+      Pop.error(error)
+    }
+ 
+  }
 }
