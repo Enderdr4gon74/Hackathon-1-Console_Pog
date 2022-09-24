@@ -11,7 +11,7 @@ function _drawClips() {
 function _drawActiveClip() {
   // @ts-ignore
   let template = appState.activeClip.activeClipTemplate;
-  setHTML("active-clip", template);
+  setHTML("main-clip", template);
 }
 export class ClipsController {
   constructor() {

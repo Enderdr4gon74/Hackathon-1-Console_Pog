@@ -4,6 +4,7 @@ export class Clip {
     this.url = data.url;
     this.thumbnailURL = data.thumbnailURL;
     this.id = data.id;
+   
   }
 
   get ClipTemplate() {

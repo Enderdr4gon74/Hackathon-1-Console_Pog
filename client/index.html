@@ -1,112 +1,190 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link
+      rel="icon"
+      href="https://bcw.blob.core.windows.net/public/img/9977764104160066" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/7.0.96/css/materialdesignicons.min.css"
+      integrity="sha512-fXnjLwoVZ01NUqS/7G5kAnhXNXat6v7e3M9PhoMHOTARUMCaf5qNO84r5x9AFf5HDzm3rEZD8sb/n6dZ19SzFA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="assets/style/main.css" />
+    <link
+      rel="stylesheet"
+      href="//cdn.materialdesignicons.com/6.9.96/css/materialdesignicons.min.css" />
+    <link rel="stylesheet" href="assets/style/style.css" />
+    <title>Console.Pog()</title>
+  </head>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link rel="icon" href="https://bcw.blob.core.windows.net/public/img/9977764104160066">
-  <link rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/7.0.96/css/materialdesignicons.min.css"
-    integrity="sha512-fXnjLwoVZ01NUqS/7G5kAnhXNXat6v7e3M9PhoMHOTARUMCaf5qNO84r5x9AFf5HDzm3rEZD8sb/n6dZ19SzFA=="
-    crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <link rel="stylesheet" href="assets/style/main.css">
-  <link rel="stylesheet" href="//cdn.materialdesignicons.com/6.9.96/css/materialdesignicons.min.css">
-  <link rel="stylesheet" href="assets/style/style.css">
-  <title>Console.Pog()</title>
-</head>
+  <style>
+    body.debug .container,
+    body.debug .container-fluid {
+      outline: 2px double blue;
+      outline-offset: -2px;
+    }
 
-<style>
-  body.debug .container,
-  body.debug .container-fluid {
-    outline: 2px double blue;
-    outline-offset: -2px;
-  }
+    body.debug .row {
+      outline: 2px dashed red;
+      outline-offset: -2px;
+    }
 
-  body.debug .row {
-    outline: 2px dashed red;
-    outline-offset: -2px;
-  }
+    body.debug [class*="col-"] {
+      outline: 2px dotted forestgreen;
+      outline-offset: -3px;
+    }
+  </style>
 
-  body.debug [class*="col-"] {
-    outline: 2px dotted forestgreen;
-    outline-offset: -3px;
-  }
-</style>
-
-<body class="">
-  <header>
-    <nav class="navbar navbar-dark navbar-expand bg-dark text-light px-3 pt-3 pb-0">
-      <a class="navbar-brand pt-2 ps-2" href="#">
-        <h2>Console.Pog( )</h2>
-      </a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
-        aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-        <div class="navbar-nav">
-          <!-- NAVLINKS -->
+  <body class="">
+    <header>
+      <nav
+        class="navbar navbar-dark navbar-expand bg-dark text-light px-3 pt-3 pb-0">
+        <a class="navbar-brand pt-2 ps-2" href="#">
+          <h2>Console.Pog( )</h2>
+        </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarNavAltMarkup"
+          aria-controls="navbarNavAltMarkup"
+          aria-expanded="false"
+          aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <div class="navbar-nav">
+            <!-- NAVLINKS -->
+          </div>
         </div>
-      </div>
 
-      <div class="flex-grow-1 justify-content-end align-items-center d-flex" id="authstate"></div>
-    </nav>
-    <nav class="navbar navbar-dark navbar-expand bg-dark text-light px-3 pb-2 justify-content-end">
-      <div class="col-4 d-flex py-2 px-4 justify-content-end">
-        <button class="btn btn-outline-light"  data-bs-toggle="offcanvas" data-bs-target="#addVideoDark" aria-controls="addVideoDark">Add Video</button>
-      </div>
-    </nav>
-  </header>
-
-  <main class="container-fluid">
-    
-    <section class="row gap-1 py-5 justify-content-around" id="clips">
-      <!-- NOTE this is where the clips thumbnail go -->
-    </section>
-  </main>
-
-  <div class="modal modal-xl fade" id="Video" tabindex="-1" aria-labelledby="VideoLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <!-- NOTE this is where the video template will go -->
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="VideoLabel">Video Title</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <div
+          class="flex-grow-1 justify-content-end align-items-center d-flex"
+          id="authstate"></div>
+      </nav>
+      <nav
+        class="navbar navbar-dark navbar-expand bg-dark text-light px-3 pb-2 justify-content-end">
+        <div class="col-4 d-flex py-2 px-4 justify-content-end">
+          <button
+            class="btn btn-outline-light"
+            data-bs-toggle="offcanvas"
+            data-bs-target="#addVideoDark"
+            aria-controls="addVideoDark">
+            Add Video
+          </button>
         </div>
-        <div class="modal-body container-fluid">
-          <section class="row" id="active-clip">
-            
+      </nav>
+    </header>
 
-          </section>
+    <main class="container-fluid">
+      <section class="row gap-1 py-5 justify-content-around" id="clips">
+        <!-- NOTE this is where the clips thumbnail go -->
+      </section>
+    </main>
+
+    <div
+      class="modal modal-xl fade"
+      id="Video"
+      tabindex="-1"
+      aria-labelledby="VideoLabel"
+      aria-hidden="true">
+      <div class="modal-dialog" id="main-clip">
+        <!-- NOTE this is where the video template will go -->
+        <!-- <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="VideoLabel">Video Title</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"></button>
+          </div>
+          <div class="modal-body container-fluid">
+            <section class="row" id="active-clip">
+              <div class="col-8 d-flex flex-column justify-content-between">
+      <section class="row">
+        <div class="col-12">
+          <iframe width="100%" height="450" src="${this.url}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          <video width="320" height="240" controls>
+            <source src="../client/assets/img/production ID_4247319.mp4" type="video/mp4">
+          </video>
+        </div>
+      </section>
+      <section class="row mb-2">
+        <div class="col-12 d-flex justify-content-between">
+          <div class="d-flex">
+            <button onclick="" class="btn btn-outline-dark me-4"><i class="mdi mdi-thumb-up"></i>${this.likes}</button>
+            <button onclick="" class="btn btn-outline-dark"><i class="mdi mdi-thumb-down"></i>${this.dislikes}</button>
+          </div>
+          <h4>${this.views}  Views</h4>
+        </div>
+      </section>
+    </div>
+    <div class="col-4" id="comments">
+    <div class="row d-flex flex-column justify-content-start align-items-stretch comment">
+    <div class="col-12 comment">
+      <div class="row flex-column justify-content-between comment">
+        <div class="col-12 comment-row overflow-auto">
+          <div class="row gap-2">
+            ${this.commentsTemplate}
+           </div>
+          </div>
+          <div class="col-12 p-0 mt-2">
+            <form class="d-flex justify-content-between align-items-center">
+              <div class="form-floating">
+                <input type="text" class="form-control" name="comment" id="comment" placeholder="Comment">
+                <label for="comment">Comment</label>
+                </div>
+                <button type="submit" class="btn btn-info comment me-2">Comment</button>
+            </form>
+          </div>
         </div>
       </div>
     </div>
   </div>
-  
-  <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="addVideoDark" aria-labelledby="addVideoDarkLabel">
-    <div class="offcanvas-header">
-      <h5 class="offcanvas-title" id="addVideoDarkLabel">Offcanvas</h5>
-      <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
     </div>
-    <div class="offcanvas-body">
-      
+            </section>
+          </div> -->
+        </div>
+      </div>
     </div>
-  </div>
 
-  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-  <script src="https://cdn.auth0.com/js/auth0-spa-js/1.22/auth0-spa-js.production.js"></script>
-  <script src="https://cdn.jsdelivr.net/gh/jakeoverall/auth0provider-client/browser/Auth0Provider.js"></script>
-  <script src="https://cdn.socket.io/4.1.1/socket.io.min.js"
-    integrity="sha384-cdrFIqe3RasCMNE0jeFG9xJHog/tgOVC1E9Lzve8LQN1g5WUHo0Kvk1mawWjxX7a"
-    crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
-    crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.3.10/dist/sweetalert2.all.min.js"
-    integrity="sha256-hw7v8jZF/rFEdx1ZHepT4D73AFTHLu/P9kEyrNesRyc=" crossorigin="anonymous"></script>
+    <div
+      class="offcanvas offcanvas-end text-bg-dark"
+      tabindex="-1"
+      id="addVideoDark"
+      aria-labelledby="addVideoDarkLabel">
+      <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="addVideoDarkLabel">Offcanvas</h5>
+        <button
+          type="button"
+          class="btn-close btn-close-white"
+          data-bs-dismiss="offcanvas"
+          aria-label="Close"></button>
+      </div>
+      <div class="offcanvas-body"></div>
+    </div>
 
-  <script src="app/App.js" type="module"></script>
-</body>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.auth0.com/js/auth0-spa-js/1.22/auth0-spa-js.production.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/jakeoverall/auth0provider-client/browser/Auth0Provider.js"></script>
+    <script
+      src="https://cdn.socket.io/4.1.1/socket.io.min.js"
+      integrity="sha384-cdrFIqe3RasCMNE0jeFG9xJHog/tgOVC1E9Lzve8LQN1g5WUHo0Kvk1mawWjxX7a"
+      crossorigin="anonymous"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
+      crossorigin="anonymous"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/sweetalert2@11.3.10/dist/sweetalert2.all.min.js"
+      integrity="sha256-hw7v8jZF/rFEdx1ZHepT4D73AFTHLu/P9kEyrNesRyc="
+      crossorigin="anonymous"></script>
 
+    <script src="app/App.js" type="module"></script>
+  </body>
 </html>
