@@ -1,21 +1,21 @@
 import { Schema } from "mongoose";
 const ObjectId = Schema.Types.ObjectId
-export const ViewerSchema = new Schema({
-  viewerId: { type: ObjectId, required: true, ref: "Account" },
+export const LikeSchema = new Schema({
+  likeId: { type: ObjectId, required: true, ref: "Account" },
   clipId: { type: ObjectId, required: true, ref: 'Clip' }
 },
   { timestamps: true, toJSON: { virtuals: true } }
 )
-ViewerSchema.virtual('viewer', {
-  localField: 'viewerId',
+LikeSchema.virtual('like', {
+  localField: 'likeId',
   foreignField: '_id',
   justOne: true,
   ref: "Account"
 })
-ViewerSchema.virtual('clip', {
+LikeSchema.virtual('clip', {
   localField: 'clipId',
   foreignField: '_id',
   justOne: true,
   ref: "Clip"
 })
-ViewerSchema.index({ viewerId: 1, clipId: 1 }, { unique: true })
+LikeSchema.index({ likeId: 1, clipId: 1 }, { unique: true })

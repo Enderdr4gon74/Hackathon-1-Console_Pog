@@ -7,13 +7,14 @@ export class ClipsController extends BaseController {
     super("/api/clips");
     this.router
       .get("", this.getClips)
-      .get('/:clipId', this.getClipById)
       .use(Auth0Provider.getAuthorizedUserInfo)
+      .get('/:clipId', this.getClipById)
       .get('/:clipId/comments', this.getClipComments)
       .post('/:clipId/comments', this.createClipComment)
       .post("", this.createClip)
       .delete('/:clipId', this.removeClip)
       .delete('/comments/:commentId',this.removeComment)
+      // .put('/:clipId/like',this.toggleLike)
   }
   async removeComment(req,res,next) {
     try {

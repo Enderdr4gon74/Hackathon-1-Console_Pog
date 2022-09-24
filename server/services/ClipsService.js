@@ -3,7 +3,6 @@ import { BadRequest, Forbidden } from "../utils/Errors.js";
 
 class ClipsService {
   async removeComment(commentId,userInfo) {
-
     const comment = await dbContext.Comments.findById(commentId)
     if(!comment){throw new BadRequest('Invalid Id')}
     if(comment.commentCreatorId != userInfo.id){throw new Forbidden('HEY GO AWAY NOT URS')}
@@ -21,19 +20,30 @@ class ClipsService {
     const clipComments = await dbContext.Comments.find({clipId}).populate('creator', 'name picture')
     return clipComments
   }
-  async getViewers(query = {}) {
-    const viewers = await dbContext.Viewers.find(query)
-      .populate("clip")
-      .populate("viewer", "name picture");
-    return viewers;
+  async createDislike(formData) {
+    const clip = await this.getClipById(formData.clipId)
+    const dislike = await dbContext.dislikes.create(formData)
+    await dislike.populate('clip')
+    await dislike.populate('dislike','name picture')
+    return dislike
   }
-  async createViewer(formData) {
-    const clip = await this.getClipById(formData.clipId);
-    const viewer = await dbContext.Viewers.create(formData);
-    await viewer.populate("clip");
-    await viewer.populate("viewer", "name picture");
-    return viewer;
-  }
+async getDislikes(query = {}){
+  const dislikes = await dbContext.dislikes.find(query)
+  .populate('clip').populate('dislike','name picture')
+}
+  // async getViewers(query = {}) {
+  //   const viewers = await dbContext.Viewers.find(query)
+  //     .populate("clip")
+  //     .populate("viewer", "name picture");
+  //   return viewers;
+  // }
+  // async createViewer(formData) {
+  //   const clip = await this.getClipById(formData.clipId);
+  //   const viewer = await dbContext.Viewers.create(formData);
+  //   await viewer.populate("clip");
+  //   await viewer.populate("viewer", "name picture");
+  //   return viewer;
+  // }
   async removeClip(id, userInfo) {
     const clip = await this.getClipById(id);
     if (clip.creatorId != userInfo.id) {
@@ -48,10 +58,7 @@ class ClipsService {
   }
   async getClipById(id) {
     // TODO populate for every user like or view
-    const clip = await dbContext.Clips.findById(id).populate(
-      "creator",
-      "name picture"
-    );
+    const clip = await dbContext.Clips.findById(id).populate("creator","name picture").populate('like').populate('dislike')
     if (!clip) {
       throw new BadRequest("Invalid Id");
     }

@@ -29,11 +29,17 @@ ClipSchema.virtual("creator", {
   justOne: true,
   ref: "Account",
 });
-ClipSchema.virtual("viewer", {
+ClipSchema.virtual("like", {
   localField: "_id",
   foreignField: "clipId",
   count: true,
-  ref: "Viewer",
+  ref: "like",
+});
+ClipSchema.virtual("dislike", {
+  localField: "_id",
+  foreignField: "clipId",
+  count: true,
+  ref: "dislike",
 });
 
 // TODO add this to dbContext
