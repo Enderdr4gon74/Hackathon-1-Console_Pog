@@ -16,7 +16,7 @@ class AppState extends EventEmitter {
   /** @type {import('./Models/Clip.js').Clip[]} */
   clips = [];
 
-  /** @type {import('./Models/ActiveClip.js').ActiveClip | null} */
+  /** @type {import('./Models/ActiveClip.js').ActiveClip} */
   activeClip = null;
   /** @type {import('./Models/Comment').Comment []} */
   activeComments = [];
