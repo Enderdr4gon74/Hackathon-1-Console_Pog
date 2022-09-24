@@ -18,7 +18,7 @@ export class ActiveClip {
             <div class="modal-content">
           <div class="modal-header">
             <h5 class="modal-title" id="VideoLabel">${this.name}</h5>
-            <button
+            <button onclick="app.clipsController.resetActiveClip()"
               type="button"
               class="btn-close"
               data-bs-dismiss="modal"
@@ -51,11 +51,11 @@ export class ActiveClip {
       <div class="row flex-column justify-content-between comment">
         <div class="col-12 comment-row overflow-auto">
           <div class="row gap-2" id="commentsTemplate">
-          
+          ${this.Comments}
           </div>
           </div>
           <div class="col-12 p-0 mt-2">
-            <form class="d-flex justify-content-between align-items-center" onsubmit="app.clipsController('${this.id}')">
+            <form class="d-flex justify-content-between align-items-center" onsubmit="app.clipsController.createComment('${this.id}')">
               <div class="form-floating">
                 <input type="text" class="form-control" name="comment" id="comment" placeholder="Comment">
                 <label for="comment">Comment</label>
@@ -73,9 +73,11 @@ export class ActiveClip {
     
     `;
   }
-  // get Template() {
-  //   let template = "";
-  //   appState.activeComments.forEach((c) => (template += c.CommentsTemplate));
-  //   return template;
-  // }
+
+  get Comments() {
+    let comments = appState.activeComments;
+    let template = "";
+    comments.forEach((c) => (template += c.CommentsTemplate));
+    return template;
+  }
 }
