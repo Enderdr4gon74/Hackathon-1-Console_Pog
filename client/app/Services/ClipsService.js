@@ -8,7 +8,7 @@ class ClipsService {
   async setActiveClip(id) {
     const res = await server.get(`/api/clips/${id}`);
     const response = await server.get(`/api/clips/${id}/comments`);
-    appState.activeComments = new Comment(response.data);
+    appState.activeComments = response.data.map((c) => new Comment(c));
     appState.activeClip = new ActiveClip(res.data);
     console.log(appState.activeComments);
   }

@@ -1,3 +1,5 @@
+import { appState } from "../AppState.js";
+
 export class ActiveClip {
   constructor(data) {
     this.name = data.name;
@@ -48,8 +50,8 @@ export class ActiveClip {
     <div class="col-12 comment">
       <div class="row flex-column justify-content-between comment">
         <div class="col-12 comment-row overflow-auto">
-          <div class="row gap-2" id="comments-template">
-          //
+          <div class="row gap-2" id="commentsTemplate">
+          ${this.Template}
           </div>
           </div>
           <div class="col-12 p-0 mt-2">
@@ -71,12 +73,9 @@ export class ActiveClip {
     
     `;
   }
-  get commentsTemplate() {
-    return `
-    <div class="col-12 d-flex">
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem dignissimos eaque delectus.</p>
-              <img title="name" src="https://thiscatdoesnotexist.com/" alt="" class="img-fluid userImage rounded-circle ms-2">
-            </div>
-    `;
+  get Template() {
+    let template = "";
+    appState.activeComments.forEach((c) => (template += c.CommentsTemplate));
+    return template;
   }
 }
