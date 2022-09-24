@@ -2,9 +2,14 @@ import { dbContext } from "../db/DbContext.js";
 import { BadRequest, Forbidden } from "../utils/Errors.js";
 
 class ClipsService {
-  async removeComment(commentId) {
-  //   const comment 
-  //  await dbContext.Comments.
+  async removeComment(commentId,userInfo) {
+
+    const comment = await dbContext.Comments.findById(commentId)
+    if(!comment){throw new BadRequest('Invalid Id')}
+    if(comment.commentCreatorId != userInfo.id){throw new Forbidden('HEY GO AWAY NOT URS')}
+    comment.remove()
+  //  const comment =  await dbContext.Comments.find({commentId})
+  //  dbContext.Comments.remove(commentId)
   }
   async createClipComment(clipId, formData, userInfo) {
     formData.clipId = clipId

@@ -17,7 +17,8 @@ export class ClipsController extends BaseController {
   }
   async removeComment(req,res,next) {
     try {
-      await clipsService.removeComment(req.params.commentId)
+      await clipsService.removeComment(req.params.commentId,req.userInfo)
+      res.send('removed this comment')
     } catch (error) {
       next(error)
     }
