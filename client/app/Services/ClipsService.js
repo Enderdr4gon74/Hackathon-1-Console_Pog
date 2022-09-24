@@ -15,7 +15,6 @@ class ClipsService {
     let id = formData.clipId;
     let comment = formData;
     const res = await server.post(`/api/clips/${id}/comments`, comment);
-    debugger;
     appState.activeComments = [
       new Comment(res.data),
       ...appState.activeComments,
