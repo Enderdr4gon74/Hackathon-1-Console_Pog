@@ -6,6 +6,7 @@ class ClipsService {
     formData.clipId = clipId
     formData.commentCreatorId = userInfo.id
     const clipComment = await dbContext.Comments.create(formData)
+    clipComment.populate('creator', "picture name")
     return clipComment
   }
    async getCommentsByClipId(clipId) {
