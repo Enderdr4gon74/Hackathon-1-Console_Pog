@@ -4,7 +4,7 @@ export class ActiveClip {
   constructor(data) {
     this.name = data.name;
     this.url = data.url;
-    this.id = data.id;
+    this.id = data.clipId;
     this.likes = data.likes;
     this.dislikes = data.dislikes || "0";
     this.views = data.views;
@@ -51,11 +51,11 @@ export class ActiveClip {
       <div class="row flex-column justify-content-between comment">
         <div class="col-12 comment-row overflow-auto">
           <div class="row gap-2" id="commentsTemplate">
-          ${this.Template}
+          
           </div>
           </div>
           <div class="col-12 p-0 mt-2">
-            <form class="d-flex justify-content-between align-items-center">
+            <form class="d-flex justify-content-between align-items-center" onsubmit="app.clipsController('${this.id}')">
               <div class="form-floating">
                 <input type="text" class="form-control" name="comment" id="comment" placeholder="Comment">
                 <label for="comment">Comment</label>
@@ -73,9 +73,9 @@ export class ActiveClip {
     
     `;
   }
-  get Template() {
-    let template = "";
-    appState.activeComments.forEach((c) => (template += c.CommentsTemplate));
-    return template;
-  }
+  // get Template() {
+  //   let template = "";
+  //   appState.activeComments.forEach((c) => (template += c.CommentsTemplate));
+  //   return template;
+  // }
 }

@@ -12,19 +12,23 @@ function _drawActiveClip() {
   // @ts-ignore
   let template = appState.activeClip.activeClipTemplate;
   setHTML("main-clip", template);
+  _drawActiveComments();
 }
-
+function _drawActiveComments() {
+  let template = "";
+  appState.activeComments.forEach((c) => (template += c.CommentsTemplate));
+  setHTML("commentsTemplate", template);
+}
 
 export class ClipsController {
   constructor() {
     this.getClips();
     appState.on("clips", _drawClips);
     appState.on("activeClip", _drawActiveClip);
-    
   }
   async getClips() {
     try {
-      const Clips = await clipsService.getClips();
+      await clipsService.getClips();
     } catch (error) {
       console.error("[Get Video]", error);
       Pop.error(error);
