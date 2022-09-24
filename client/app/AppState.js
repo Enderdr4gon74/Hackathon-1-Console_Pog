@@ -18,8 +18,8 @@ class AppState extends EventEmitter {
 
   /** @type {import('./Models/ActiveClip.js').ActiveClip | null} */
   activeClip = null;
-  /** @type {import('./Models/Comment').Comment| null} */
-  activeComments = null;
+  /** @type {import('./Models/Comment').Comment []} */
+  activeComments = [];
 
   socketData = [];
 }

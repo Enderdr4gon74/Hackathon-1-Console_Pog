@@ -13,11 +13,14 @@ function _drawActiveClip() {
   let template = appState.activeClip.activeClipTemplate;
   setHTML("main-clip", template);
 }
+
+
 export class ClipsController {
   constructor() {
     this.getClips();
     appState.on("clips", _drawClips);
     appState.on("activeClip", _drawActiveClip);
+    
   }
   async getClips() {
     try {
