@@ -13,6 +13,14 @@ export class ClipsController extends BaseController {
       .post('/:clipId/comments', this.createClipComment)
       .post("", this.createClip)
       .delete('/:clipId', this.removeClip)
+      .delete('/comments/:commentId',this.removeComment)
+  }
+  async removeComment(req,res,next) {
+    try {
+      await clipsService.removeComment(req.params.commentId)
+    } catch (error) {
+      next(error)
+    }
   }
   async removeClip(req, res, next) {
     try {

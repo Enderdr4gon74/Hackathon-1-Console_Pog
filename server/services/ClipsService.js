@@ -2,6 +2,10 @@ import { dbContext } from "../db/DbContext.js";
 import { BadRequest, Forbidden } from "../utils/Errors.js";
 
 class ClipsService {
+  async removeComment(commentId) {
+  //   const comment 
+  //  await dbContext.Comments.
+  }
   async createClipComment(clipId, formData, userInfo) {
     formData.clipId = clipId
     formData.commentCreatorId = userInfo.id
