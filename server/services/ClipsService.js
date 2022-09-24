@@ -9,7 +9,7 @@ class ClipsService {
     return clipComment
   }
    async getCommentsByClipId(clipId) {
-    const clipComments = await dbContext.Comments.find({clipId}).populate('creator', "name picture")
+    const clipComments = await dbContext.Comments.find({clipId}).populate('creator', 'name picture')
     return clipComments
   }
   async getViewers(query = {}) {
