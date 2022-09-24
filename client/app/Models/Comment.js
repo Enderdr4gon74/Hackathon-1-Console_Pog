@@ -1,8 +1,10 @@
+import { appState } from "../AppState.js";
+
 export class Comment {
   constructor(data) {
     this.comment = data.comment;
     this.commentCreatorId = data.commentCreatorId;
-    this.name = data.creator.name;
+    this.name = data.creator.name 
     this.picture = data.creator.picture;
   }
   get CommentsTemplate() {

@@ -4,7 +4,7 @@ export class ActiveClip {
   constructor(data) {
     this.name = data.name;
     this.url = data.url;
-    this.id = data.clipId;
+    this.id = data.id;
     this.likes = data.likes;
     this.dislikes = data.dislikes || "0";
     this.views = data.views;

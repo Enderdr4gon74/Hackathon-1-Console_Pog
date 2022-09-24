@@ -12,11 +12,15 @@ class ClipsService {
   //   throw new Error("Method not implemented.");
   // }
   async createComment(formData) {
-    formData.name = appState.account;
-    let comment = new Comment(formData);
     let id = formData.clipId;
+    let comment = formData;
     const res = await server.post(`/api/clips/${id}/comments`, comment);
-    appState.activeComments = [comment, ...appState.activeComments];
+    debugger;
+    appState.activeComments = [
+      new Comment(res.data),
+      ...appState.activeComments,
+    ];
+    appState.emit("activeComments");
   }
   async setActiveClip(id) {
     const res = await server.get(`/api/clips/${id}`);

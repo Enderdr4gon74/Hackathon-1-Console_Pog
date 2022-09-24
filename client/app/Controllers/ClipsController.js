@@ -74,7 +74,8 @@ export class ClipsController {
       window.event.preventDefault();
       let form = window.event.target;
       let formData = getFormData(form);
-      formData.clipId = clipId;
+      formData.clipId = appState.activeClip.id;
+      formData.name = appState.account.name;
       clipsService.createComment(formData);
     } catch (error) {
       console.error("[CREATE COMMENT]", error);
