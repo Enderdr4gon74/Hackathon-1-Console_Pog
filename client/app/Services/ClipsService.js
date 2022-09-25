@@ -17,7 +17,7 @@ class ClipsService {
   }
   async getClips() {
     const res = await server.get("/api/clips");
-    console.log(res.data);
+    console.log(res.data, "get clips");
     appState.clips = res.data.map((c) => new Clip(c));
   }
 }
