@@ -10,8 +10,8 @@ class ClipsService {
     let comment = formData;
     const res = await server.post(`/api/clips/${id}/comments`, comment);
     appState.activeComments = [
-      new Comment(res.data),
       ...appState.activeComments,
+      new Comment(res.data),
     ];
     appState.emit("activeClips");
   }

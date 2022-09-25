@@ -34,6 +34,8 @@ export class ClipsController {
       formData.clipId = appState.activeClip.id;
       formData.name = appState.account.name;
       clipsService.createComment(formData);
+      // @ts-ignore
+      form.reset();
     } catch (error) {
       console.error("[CREATE COMMENT]", error);
       Pop.error(error);
