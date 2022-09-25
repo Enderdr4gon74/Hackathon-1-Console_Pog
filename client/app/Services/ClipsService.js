@@ -7,13 +7,15 @@ import { server } from "./AxiosService.js";
 class ClipsService {
   async createComment(formData) {
     let id = formData.clipId;
-    let comment = formData;
+    const comment = formData;
     const res = await server.post(`/api/clips/${id}/comments`, comment);
     appState.activeComments = [
       ...appState.activeComments,
       new Comment(res.data),
     ];
-    appState.emit("activeClips");
+    appState.newComment++;
+    
+    // appState.emit("activeComments");
   }
   async getClips() {
     const res = await server.get("/api/clips");
