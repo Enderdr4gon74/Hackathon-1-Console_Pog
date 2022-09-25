@@ -9,9 +9,12 @@ export class Comment {
   }
   get CommentsTemplate() {
     return `
-    <div class="col-12 d-flex justify-content-between">
-              <p>${this.comment}</p>
-              <img title="${this.name}" src="${this.picture}" alt="" class="img-fluid userImage rounded-circle ms-2">
+    <div class="col-12 d-flex justify-content-between p-2 border rounded border-2 elevation 3 ">
+    
+    <small>${this.comment}</small>
+    
+    
+              <img title="${this.name}" src="${this.picture}" alt="" class="img-fluid userImage rounded-circle ms-2 " style="width:2rem;height:2rem;">
             </div>
     `;
   }

@@ -7,30 +7,29 @@ export class ClipsController extends BaseController {
     super("/api/clips");
     this.router
       .get("", this.getClips)
+      .get("/:clipId", this.getClipById)
+      .get("/:clipId/comments", this.getClipComments)
       .use(Auth0Provider.getAuthorizedUserInfo)
-      .get('/:clipId', this.getClipById)
-      .get('/:clipId/comments', this.getClipComments)
-      .post('/:clipId/comments', this.createClipComment)
+      .post("/:clipId/comments", this.createClipComment)
       .post("", this.createClip)
-      .delete('/:clipId', this.removeClip)
-      .delete('/comments/:commentId',this.removeComment)
-      // .put('/:clipId/like',this.toggleLike)
+      .delete("/:clipId", this.removeClip)
+      .delete("/comments/:commentId", this.removeComment);
+    // .put('/:clipId/like',this.toggleLike)
   }
-  async removeComment(req,res,next) {
+  async removeComment(req, res, next) {
     try {
-      await clipsService.removeComment(req.params.commentId,req.userInfo)
-      res.send('removed this comment')
+      await clipsService.removeComment(req.params.commentId, req.userInfo);
+      res.send("removed this comment");
     } catch (error) {
-      next(error)
+      next(error);
     }
   }
   async removeClip(req, res, next) {
     try {
-
-      await clipsService.removeClip(req.params.clipId, req.userInfo)
-      res.send('Removed this Clip!')
+      await clipsService.removeClip(req.params.clipId, req.userInfo);
+      res.send("Removed this Clip!");
     } catch (error) {
-      next(error)
+      next(error);
     }
   }
   async createClip(req, res, next) {
@@ -45,20 +44,26 @@ export class ClipsController extends BaseController {
 
   async createClipComment(req, res, next) {
     try {
-      const formData = req.body
-      const clipComment = await clipsService.createClipComment(req.params.clipId, formData, req.userInfo)
-      res.send(clipComment)
+      const formData = req.body;
+      const clipComment = await clipsService.createClipComment(
+        req.params.clipId,
+        formData,
+        req.userInfo
+      );
+      res.send(clipComment);
     } catch (error) {
-      next(error)
+      next(error);
     }
   }
 
   async getClipComments(req, res, next) {
     try {
-      const clipComments = await clipsService.getCommentsByClipId(req.params.clipId)
-      res.send(clipComments)
+      const clipComments = await clipsService.getCommentsByClipId(
+        req.params.clipId
+      );
+      res.send(clipComments);
     } catch (error) {
-      next(error)
+      next(error);
     }
   }
 

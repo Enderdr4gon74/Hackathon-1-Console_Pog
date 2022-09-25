@@ -9,22 +9,12 @@ function _drawClips() {
   appState.clips.forEach((c) => (template += c.ClipTemplate));
   setHTML("clips", template);
 }
-function _drawActiveClip() {
-  // @ts-ignore
-  let template = appState.activeClip.activeClipTemplate;
-  setHTML("main-clip", template);
-}
-function _drawActiveComments() {
-  let template = "";
-  appState.activeComments.forEach((c) => (template += c.CommentsTemplate));
-  setHTML("commentsTemplate", template);
-}
 
 export class ClipsController {
   constructor() {
     this.getClips();
     appState.on("clips", _drawClips);
-    appState.on("activeComments", _drawActiveClip);
+    // appState.on("activeComments", _drawActiveClip);
     // appState.on("activeComments", _drawActiveComments);
   }
   async getClips() {
@@ -35,39 +25,6 @@ export class ClipsController {
       Pop.error(error);
     }
   }
-  async setActiveClip(id) {
-    try {
-      // appState.activeClip = null;
-      await clipsService.setActiveClip(id);
-      await clipsService.setActiveComment(id);
-
-      // if (appState.activeClip != null) {
-      //   appState.activeClip = null;
-      //   return;
-      // }
-    } catch (error) {
-      console.error("[setActiveClip]", error);
-      Pop.error(error);
-    }
-  }
-
-  async resetActiveClip() {
-    try {
-      await clipsService.resetActiveClip();
-    } catch (error) {
-      console.error("[]", error);
-      Pop.error(error);
-    }
-  }
-
-  // async getAllComments() {
-  //   try {
-  //     await clipsService.getAllComments();
-  //   } catch (error) {
-  //     console.error("[]", error);
-  //     Pop.error(error);
-  //   }
-  // }
 
   async createComment(clipId) {
     try {

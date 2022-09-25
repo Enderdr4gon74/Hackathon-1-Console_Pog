@@ -15,10 +15,79 @@ export class ActiveClip {
   get activeClipTemplate() {
     return /*html */ `
 
-            <div class="modal-content">
+        <div class="container-fluid">
+                <div class="row">
+                  <div class="col-md-12">
+                    <button
+                      type="button"
+                      class="btn-close"
+                      data-bs-dismiss="modal"
+                      aria-label="Close"></button>
+                    <div class="">
+                      <h5><b>${this.name}</b></h5>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                  <iframe width="651" height="535" src="${this.url} " allowfullscreen class="rounded elevation-4 "></iframe>
+                  <div class="col-12 d-flex justify-content-between">
+          <div class="d-flex">
+            <button onclick="" class="btn btn-outline-dark me-4"><i class="mdi mdi-thumb-up"></i>${this.likes}</button>
+            <button onclick="" class="btn btn-outline-dark mx-4"><i class="mdi mdi-thumb-down"></i>${this.dislikes}</button>
+            <h4>${this.views}  Views</h4>
+          </div>
+        </div>
+                  </div>
+                  <div class="col-md-6" >
+                  <div class="scrollme border-solid" id="commentsTemplate" >${this.Comments}</div>
+                  <div id="form-div" class="mt-5">
+                    <form class="d-flex justify-content-between align-items-center" onsubmit="app.clipsController.createComment('${this.id}')">
+              <div class="form-floating">
+                <input type="text" class="form-control" name="comment" id="comment" placeholder="Comment">
+                <label for="comment">Comment</label>
+                </div>
+                <button type="submit" class="btn btn-info comment ms-2">Comment</button>
+            </form>
+            </div>
+                  
+                </div>
+              </div>
+    
+    `;
+  }
+
+  /*
+   <div class="row gap-2" id="commentsTemplate">
+          </div>
+  /
+  /**
+   * <section class="row mb-2">
+        <div class="col-12 d-flex justify-content-between">
+          <div class="d-flex">
+            <button onclick="" class="btn btn-outline-dark me-4"><i class="mdi mdi-thumb-up"></i>${this.likes}</button>
+            <button onclick="" class="btn btn-outline-dark"><i class="mdi mdi-thumb-down"></i>${this.dislikes}</button>
+          </div>
+          <h4>${this.views}  Views</h4>
+        </div>
+      </section>
+   */
+
+  /**
+   *
+   */
+
+  get Comments() {
+    let comments = appState.activeComments;
+    let template = "";
+    comments.forEach((c) => (template += c.CommentsTemplate));
+    return template;
+  }
+}
+
+/*
+    <div class="modal-content">
           <div class="modal-header">
             <h5 class="modal-title" id="VideoLabel">${this.name}</h5>
-            <button onclick="app.clipsController.resetActiveClip()"
+            <button 
               type="button"
               class="btn-close"
               data-bs-dismiss="modal"
@@ -51,33 +120,13 @@ export class ActiveClip {
       <div class="row flex-column justify-content-between comment">
         <div class="col-12 comment-row overflow-auto">
           <div class="row gap-2" id="commentsTemplate">
-          ${this.Comments}
           </div>
           </div>
-          <div class="col-12 p-0 mt-2">
-            <form class="d-flex justify-content-between align-items-center" onsubmit="app.clipsController.createComment('${this.id}')">
-              <div class="form-floating">
-                <input type="text" class="form-control" name="comment" id="comment" placeholder="Comment">
-                <label for="comment">Comment</label>
-                </div>
-                <button type="submit" class="btn btn-info comment me-2">Comment</button>
-            </form>
-          </div>
+          
         </div>
       </div>
     </div>
   </div>
     </div>
             </section>
-          </div>
-    
-    `;
-  }
-
-  get Comments() {
-    let comments = appState.activeComments;
-    let template = "";
-    comments.forEach((c) => (template += c.CommentsTemplate));
-    return template;
-  }
-}
+          </div>*/
