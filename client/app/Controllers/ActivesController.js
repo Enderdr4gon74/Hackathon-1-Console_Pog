@@ -16,13 +16,14 @@ function _drawActiveComments() {
 
 export class ActivesController {
   constructor() {
-    appState.on("activeClip", _drawActiveClip);
+    // appState.on("activeClip", _drawActiveClip);
     appState.on("activeComments", _drawActiveComments);
   }
   async setActiveClip(id) {
     try {
       // appState.activeClip = null;
       await activesService.setActiveClip(id);
+      _drawActiveClip();
       await activesService.setActiveComment(id);
     } catch (error) {
       console.error("[setActiveClip]", error);
