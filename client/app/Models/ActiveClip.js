@@ -40,7 +40,7 @@ export class ActiveClip {
                   <div class="col-md-6" >
                   <div class="scrollMe border-solid" id="commentsTemplate" >${this.Comments}</div>
                   <div id="form-div" class="mt-5">
-                    <form class="d-flex justify-content-between align-items-center" onsubmit="app.clipsController.createComment('${this.id}')">
+                    <form class="d-flex justify-content-between align-items-center" onsubmit="app.commentsController.createComment('${this.id}')">
               <div class="form-floating">
                 <input type="text" class="form-control" name="comment" id="comment" placeholder="Comment">
                 <label for="comment">Comment</label>

@@ -9,41 +9,17 @@ function _drawClips() {
   appState.clips.forEach((c) => (template += c.ClipTemplate));
   setHTML("clips", template);
 }
-function _drawNewComments() {
-  let template = "";
-  appState.activeComments.forEach((c) => (template += c.CommentsTemplate));
-  setHTML("commentsTemplate", template);
-}
 
 export class ClipsController {
   constructor() {
     this.getClips();
     appState.on("clips", _drawClips);
-    appState.on("newComment", _drawNewComments);
-    // appState.on("activeComments", _drawActiveComments);
   }
   async getClips() {
     try {
       await clipsService.getClips();
     } catch (error) {
       console.error("[Get Video]", error);
-      Pop.error(error);
-    }
-  }
-
-  async createComment(clipId) {
-    try {
-      window.event.preventDefault();
-      let form = window.event.target;
-      let formData = getFormData(form);
-      formData.clipId = appState.activeClip.id;
-      formData.name = appState.account.name;
-      clipsService.createComment(formData);
-
-      // @ts-ignore
-      form.reset();
-    } catch (error) {
-      console.error("[CREATE COMMENT]", error);
       Pop.error(error);
     }
   }
