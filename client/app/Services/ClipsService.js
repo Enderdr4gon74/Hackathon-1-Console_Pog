@@ -4,10 +4,8 @@ import { server } from "./AxiosService.js";
 
 class ClipsService {
   async removeClip(id) {
-    console.log(appState.clips.length, "before");
     const res = await server.delete(`/api/clips/${id}`);
     appState.clips = appState.clips.filter((c) => c.id !== id);
-    console.log(appState.clips.length, "after");
   }
   async createClip(formData) {
     const res = await server.post("/api/clips", formData);
@@ -15,7 +13,6 @@ class ClipsService {
   }
   async getClips() {
     const res = await server.get("/api/clips");
-    console.log(res.data, "get clips");
     appState.clips = res.data.map((c) => new Clip(c));
   }
 }

@@ -3,8 +3,10 @@ import { Comment } from "../Models/Comment.js";
 import { server } from "./AxiosService.js";
 
 class CommentsService {
-  async removeComment(id) {
-    console.log(id, "removeComment");
+  async removeComment(clipId, id) {
+    console.log(clipId, id);
+    // const res = await server.delete(`api/clips/${clipId}/comments/${id}`);
+    // console.log(res.data);
   }
   async createComment(formData) {
     let id = formData.clipId;
