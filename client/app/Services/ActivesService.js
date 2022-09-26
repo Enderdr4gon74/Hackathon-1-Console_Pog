@@ -11,6 +11,7 @@ class ActivesService {
 
   async setActiveComment(id) {
     const response = await server.get(`/api/clips/${id}/comments`);
+    console.log(response.data, 'comments');
     appState.activeComments = response.data.map((c) => new Comment(c));
   }
 }

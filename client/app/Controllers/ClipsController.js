@@ -40,8 +40,8 @@ export class ClipsController {
     try {
       if (await Pop.confirm("are you sure you want to delete this?")) {
         await clipsService.removeClip(id);
+        Pop.toast("Clip deleted");
       }
-      Pop.toast("deleted");
     } catch (error) {
       console.error("[]", error);
       Pop.error(error);
