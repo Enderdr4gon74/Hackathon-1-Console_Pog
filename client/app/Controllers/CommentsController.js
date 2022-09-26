@@ -13,6 +13,20 @@ export class CommentsController {
   constructor() {
     appState.on("newComment", _drawNewComments);
   }
+
+  // NOTE removeComment doesn't work yet
+  async removeComment(id) {
+    try {
+      const yes = await Pop.confirm();
+      if (!yes) {
+        return;
+      }
+      await commentsService.removeComment(id);
+    } catch (error) {
+      console.error("[]", error);
+      Pop.error(error);
+    }
+  }
   async createComment(clipId) {
     try {
       window.event.preventDefault();

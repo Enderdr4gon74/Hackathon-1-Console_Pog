@@ -3,6 +3,9 @@ import { Comment } from "../Models/Comment.js";
 import { server } from "./AxiosService.js";
 
 class CommentsService {
+  async removeComment(id) {
+    console.log(id, "removeComment");
+  }
   async createComment(formData) {
     let id = formData.clipId;
     const comment = formData;
@@ -11,7 +14,7 @@ class CommentsService {
       ...appState.activeComments,
       new Comment(res.data),
     ];
-    appState.emit('newComment')
+    appState.emit("newComment");
   }
 }
 export const commentsService = new CommentsService();

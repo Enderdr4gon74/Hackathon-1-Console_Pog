@@ -23,4 +23,28 @@ export class ClipsController {
       Pop.error(error);
     }
   }
+
+  async createClip(formData) {
+    try {
+      window.event.preventDefault();
+      let form = window.event.target;
+      let formData = getFormData(form);
+      await clipsService.createClip(formData);
+    } catch (error) {
+      console.error("[createClip]", error);
+      Pop.error(error);
+    }
+  }
+
+  async removeClip(id) {
+    try {
+      if (await Pop.confirm("are you sure you want to delete this?")) {
+        await clipsService.removeClip(id);
+      }
+      Pop.toast("deleted");
+    } catch (error) {
+      console.error("[]", error);
+      Pop.error(error);
+    }
+  }
 }

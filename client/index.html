@@ -124,14 +124,57 @@
       id="addVideoDark"
       aria-labelledby="addVideoDarkLabel">
       <div class="offcanvas-header">
-        <h5 class="offcanvas-title" id="addVideoDarkLabel">Offcanvas</h5>
+        <h5 class="offcanvas-title" id="addVideoDarkLabel">Create Content</h5>
         <button
           type="button"
           class="btn-close btn-close-white"
           data-bs-dismiss="offcanvas"
           aria-label="Close"></button>
       </div>
-      <div class="offcanvas-body"></div>
+      <div class="offcanvas-body">
+        <form onsubmit="app.clipsController.createClip()">
+          <div class="form-floating mb-3">
+            <input
+              type="text"
+              name="name"
+              class="form-control"
+              id="floatingInput"
+              placeholder="name@example.com" />
+            <label for="floatingInput" class="text-dark">title</label>
+          </div>
+          <div class="form-floating">
+            <input
+              type="text"
+              name="description"
+              class="form-control"
+              id="floatingPassword"
+              placeholder="Password" />
+            <label for="floatingPassword" class="text-dark">description</label>
+          </div>
+          <div class="form-floating mb-3 mt-3">
+            <input
+              type="text"
+              class="form-control"
+              id="floatingInput"
+              name="url"
+              placeholder="name@example.com" />
+            <label for="floatingInput" class="text-dark">URL</label>
+          </div>
+          <div class="form-floating">
+            <input
+              type="text"
+              class="form-control"
+              name="thumbnailURL"
+              id="floatingPassword"
+              placeholder="Password" />
+            <label for="floatingPassword" class="text-dark">thumbnailUrl</label>
+          </div>
+          <div class="mt-3">
+            <button class="btn btn-warning">cancel</button>
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </div>
+        </form>
+      </div>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
