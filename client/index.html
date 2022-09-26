@@ -34,11 +34,12 @@
   }
 </style>
 
-<body class="">
+<body class="bg-dark">
   <header class="container-fluid">
     <div class="row">
       <div class="col-12">
-        <div class="fixed-top flex-grow-1 justify-content-end align-items-center d-flex" id="authstate"></div>
+        <div class="fixed-top flex-grow-1 justify-content-end align-items-center d-flex p-3 text-light" id="authstate">
+        </div>
       </div>
     </div>
     <div class="row title bg-dark align-items-center">
@@ -48,18 +49,57 @@
         </div>
       </div>
     </div>
-    <nav class="navbar navbar-dark navbar-expand bg-dark text-light px-3 pb-2 justify-content-end">
-      <div class="col-4 d-flex py-2 px-4 justify-content-end">
-        <button class="btn btn-outline-light" data-bs-toggle="offcanvas" data-bs-target="#addVideoDark"
-          aria-controls="addVideoDark">
-          Add Video
-        </button>
+    <div class="row bg-secondary">
+      <div class="col-12">
+        <nav class="navbar navbar-dark navbar-expand text-light px-4 pb-2 justify-content-between">
+          <div>
+            <button class="btn btn-dark">Search</button>
+          </div>
+          <div class="d-flex">
+            <div class="px-4">
+              <button class="btn btn-dark">My Clips</button>
+            </div>
+            <div>
+              <button class="btn btn-dark" data-bs-toggle="offcanvas" data-bs-target="#addVideoDark"
+                aria-controls="addVideoDark">
+                Add Clip
+              </button>
+            </div>
+          </div>
+        </nav>
       </div>
-    </nav>
+    </div>
   </header>
 
   <main class="container-fluid">
+    <!-- TODO make this a MY CLIP TEMPLATE -->
+    <!-- <div class="row">
+      <div class="col-12">
+        <div class="p-3  bg-light elevation-5  mx-4 my-2 ">
+          <div class="text-end">
+            <i class="btn-close" onclick="app.clipsController.removeClip('${this.id}')"></i>
+          </div>
+          <div class="p-2 bg-secondary d-flex justify-content-between">
+            <img src="${this.creatorPicture}" alt="" width="20rem">
+            <h6>${this.creatorName}</h6>
+          </div>
+          <div class="d-flex justify-content-center">
+            <img src="${this.thumbnailURL}" alt="" class="img-fluid rounded mt-2 elevation-4" data-bs-toggle="modal"
+              data-bs-target="#Video" onclick="app.activesController.setActiveClip('${this.id}')">
+          </div>
+          <div class="card-body ">
+            <div class="mt-2">
+              <h5>${this.name}</h5>
+            </div>
+            <div>
+              <small>${this.description}</small>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div> -->
     <section class="row gap-1 py-5 justify-content-around" id="clips">
+
       <!-- NOTE this is where the clips thumbnail go -->
     </section>
   </main>
