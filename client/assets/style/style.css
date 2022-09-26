@@ -1,9 +1,9 @@
-.thumbnail{
+.thumbnail {
   max-height: 75%;
   max-width: 75%;
 }
 
-.userImage{
+.userImage {
   width: 5rem;
   height: 5rem;
 }
@@ -12,6 +12,22 @@
   height: 100%;
 }
 
-.comment-row{
+.comment-row {
   height: 30rem;
+}
+
+.title {
+  height: 40vh;
+  background-image: url('https://images.unsplash.com/photo-1633545491399-54a16aa6a871?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1772&q=80');
+  background-position: center;
+  background-size: cover;
+}
+
+.title-name {
+  font-size: 5rem;
+  text-shadow: 1px 1px black, 0px 0px 5px rgb(22, 22, 22);
+}
+
+.login {
+  background-color: rgba(0, 0, 0, 0);
 }
