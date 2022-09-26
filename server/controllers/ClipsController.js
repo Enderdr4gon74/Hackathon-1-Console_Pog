@@ -9,25 +9,35 @@ export class ClipsController extends BaseController {
       .get("", this.getClips)
       .get("/:clipId", this.getClipById)
       .get("/:clipId/comments", this.getClipComments)
+      .get("/:clipId/comments/:commentCreatorId", this.getCommentById)
       .use(Auth0Provider.getAuthorizedUserInfo)
       .post("/:clipId/comments", this.createClipComment)
       .post("", this.createClip)
       .delete("/:clipId", this.removeClip)
-      .delete("/:clipId/comments/:id", this.removeComment);
+      // .delete("/:clipId/comments/:id", this.removeComment);
     // .put('/:clipId/like',this.toggleLike)
   }
-  async removeComment(req, res, next) {
-    try {
-      await clipsService.removeComment(
-        req.params.clipId,
-        req.params.id,
-        req.userInfo
-      );
-      res.send("removed this comment");
-    } catch (error) {
-      next(error);
+   async getCommentById(req, res, next){
+    try{
+      const comment = await clipsService.getCommentsById(req.params.clipId, req.params.commentCreatorId)
+   res.send(comment)
     }
-  }
+    catch (error) {
+    next(error)
+    }
+    }
+  // async removeComment(req, res, next) {
+  //   try {
+  //     await clipsService.removeComment(
+  //       req.params.clipId,
+  //       req.params.id,
+  //       req.userInfo
+  //     );
+  //     res.send("removed this comment");
+  //   } catch (error) {
+  //     next(error);
+  //   }
+  // }
   async removeClip(req, res, next) {
     try {
       await clipsService.removeClip(req.params.clipId, req.userInfo);

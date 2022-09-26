@@ -1,4 +1,5 @@
-import { Schema } from "mongoose";
+import mongoose, { Schema } from "mongoose";
+
 const ObjectId = Schema.Types.ObjectId
 export const DislikeSchema = new Schema({
   dislikeId: { type: ObjectId, required: true, ref: "Account" },

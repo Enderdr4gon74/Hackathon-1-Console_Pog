@@ -15,13 +15,13 @@ export class CommentsController {
   }
 
   // NOTE removeComment doesn't work yet
-  async removeComment(key) {
+  async removeComment(id, clipId) {
     try {
       const yes = await Pop.confirm();
       if (!yes) {
         return;
       }
-      await commentsService.removeComment(key);
+      await commentsService.removeComment(id, clipId);
     } catch (error) {
       console.error("[]", error);
       Pop.error(error);

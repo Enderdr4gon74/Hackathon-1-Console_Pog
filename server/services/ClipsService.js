@@ -2,20 +2,20 @@ import { dbContext } from "../db/DbContext.js";
 import { BadRequest, Forbidden } from "../utils/Errors.js";
 
 class ClipsService {
-  async removeComment(clipId, commentId, userInfo) {
-    // const comment = await dbContext.Comments.findById(commentId);
-    const comments = await this.getCommentsByClipId(clipId);
-    let comment = comments.find(commentId);
-    // if (!comment) {
-    //   throw new BadRequest("Invalid Id");
-    // }
-    if (comment.commentCreatorId != userInfo.id) {
-      throw new Forbidden("HEY GO AWAY NOT URS");
-    }
-    comment.remove();
-    //  const comment =  await dbContext.Comments.find({commentId})
-    //  dbContext.Comments.remove(commentId)
-  }
+  // async removeComment(clipId, commentCreatorId, userInfo) {
+  //   // const comment = await dbContext.Comments.findById(commentId);
+  //   const comments = await this.getCommentsByClipId(clipId);
+  //   let comment = comments.find({commentCreatorId})
+  //   // if (!comment) {
+  //   //   throw new BadRequest("Invalid Id");
+  //   // }
+  //   if (comment.commentCreatorId != userInfo.id) {
+  //     throw new Forbidden("HEY GO AWAY NOT URS");
+  //   }
+  //   comment.remove();
+  //   //  const comment =  await dbContext.Comments.find({commentId})
+  //   //  dbContext.Comments.remove(commentId)
+  // }
   async createClipComment(clipId, formData, userInfo) {
     formData.clipId = clipId;
     formData.commentCreatorId = userInfo.id;
@@ -86,6 +86,10 @@ class ClipsService {
     );
     return clips;
   }
-  //
+  async getCommentsById(clipId, commentCreatorId) {
+    let comments = await this.getCommentsByClipId(clipId)
+    const comment = comments.find(commentCreatorId)
+    return comment
+  }
 }
 export const clipsService = new ClipsService();
